@@ -3,6 +3,7 @@ from clientes.models import Cliente
 from clientes.validators import nome_valido, cpf_valido, rg_valido, celular_valido
 from clientes.validators import RG_LEN
 
+
 class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cliente
