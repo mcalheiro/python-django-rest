@@ -49,6 +49,19 @@ This app simulates clientes database of some business. This API simply interacts
 ## Usage
 In order the start the Django Rest framework, make sure to be in the inner ```setup``` directory (not the one that contains ```README.md``` and ```requirements.txt```) and:
 ```bash
+python manage.py makemigrations
+```
+```bash
+python manage.py migrate
+```
+The 2 previous commands will handle the db creation.
+
+Populate the database (if you do not wish to add data manually)
+```bash
+python populate_db.py
+```
+Finally:
+```bash
 python manage.py runserver
 ```
 
