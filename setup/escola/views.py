@@ -4,7 +4,7 @@ from escola.serializer import AlunoSerializer, CursoSerializer, MatriculaSeriali
 
 class AlunosViewSet(viewsets.ModelViewSet):
     """
-    Exibe todos os alunos
+    Exibicao de todos os alunos
     """
     queryset = Aluno.objects.all()
     serializer_class = AlunoSerializer
@@ -12,7 +12,7 @@ class AlunosViewSet(viewsets.ModelViewSet):
 
 class CursosViewSet(viewsets.ModelViewSet):
     """
-    Exibe todos os cursos
+    Exibicao de todos os cursos
     """
     queryset = Curso.objects.all()
     serializer_class = CursoSerializer
@@ -20,7 +20,7 @@ class CursosViewSet(viewsets.ModelViewSet):
 
 class MatriculasViewSet(viewsets.ModelViewSet):
     """
-    Exibe todas as matriculas
+    Lista de todas as matriculas
     """
     queryset = Matricula.objects.all()
     serializer_class = MatriculaSerializer
