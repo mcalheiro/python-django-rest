@@ -1,27 +1,24 @@
 from rest_framework import serializers
 from clientes.models import Cliente
+from clientes.validators import nome_valido, cpf_valido, rg_valido, celular_valido
+from clientes.validators import CPF_LEN, RG_LEN, PHONE_LEN
 
 class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Cliente
         fields = '__all__'
 
-    def validate_nome(self, nome:str) -> str:
-        if not nome.isalpha():
-            raise serializers.ValidationError('O nome nao deve ter digitos')
-        return nome
+    def validate(self, data):
+        if not nome_valido(data['nome']):
+            raise serializers.ValidationError({'nome':'O nome nao deve possuir digitos'})
 
-    def validate_cpf(self, cpf:str) -> str:
-        if len(cpf) != 11:
-            raise serializers.ValidationError('O CPF deve ter 11 digitos')
-        return cpf
+        if not cpf_valido(data['cpf']):
+            raise serializers.ValidationError({'cpf':f'O CPF deve possuir {CPF_LEN} digitos'})
+        
+        if not rg_valido(data['rg']):
+            raise serializers.ValidationError({'rg':f'O RG deve possuir {RG_LEN} digitos'})
+        
+        if not celular_valido(data['celular']):
+            raise serializers.ValidationError({'celular':f'O celular deve possuir pelo menos {PHONE_LEN} digitos'})
 
-    def validate_rg(self, rg:str) -> str:
-        if len(rg) != 9:
-            raise serializers.ValidationError('O RG deve ter 9 digitos')
-        return rg
-    
-    def validate_celular(self, celular:str) -> str:
-        if len(celular) < 11:
-            raise serializers.ValidationError('O celular deve ter pelo menos 11 digitos')
-        return celular
+        return data
