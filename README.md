@@ -45,3 +45,11 @@ This app simulates a school in which we can have students and courses. Students 
 
 ### Clientes
 This app simulates clientes database of some business. This API simply interacts with the db, being possible to add clients, edit or delete them.
+
+## Usage
+In order the start the Django Rest framework, make sure to be in the inner ```setup``` directory (not the one that contains ```README.md``` and ```requirements.txt```) and:
+```bash
+python manage.py runserver
+```
+
+> ⚠ some of the text within the apps and settings is in pt-br due to my instructor being Brazilian. Should not be a problem and I might refactor this sometime.
