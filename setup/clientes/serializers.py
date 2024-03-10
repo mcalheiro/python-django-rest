@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from clientes.models import Cliente
 from clientes.validators import nome_valido, cpf_valido, rg_valido, celular_valido
-from clientes.validators import CPF_LEN, RG_LEN, PHONE_LEN
+from clientes.validators import CPF_LEN, RG_LEN
 
 class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
@@ -19,6 +19,6 @@ class ClienteSerializer(serializers.ModelSerializer):
             raise serializers.ValidationError({'rg':f'O RG deve possuir {RG_LEN} digitos'})
         
         if not celular_valido(data['celular']):
-            raise serializers.ValidationError({'celular':f'O celular deve possuir pelo menos {PHONE_LEN} digitos'})
+            raise serializers.ValidationError({'celular':'Numero de celular invalido. Utilize o seguinte padrao: ## #####-####'})
 
         return data
